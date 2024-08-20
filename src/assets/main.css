@@ -1,35 +1,85 @@
-@import './base.css';
+:root {
+  --ochre: #d1451e;
+  --coral: #f0633c;
+  --coral-light: #ffdbd1;
+  --cream: #fffaf3;
+  --green-dark: #263a29;
+  --green: #3d6d4a;
+  --gray: #444444;
+  --gray-light: #efefef;
+  --white: #fff;
+  --black: #000;
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+  --font-sans: Nunito Sans, sans-serif;
+  --font-headings: Paytone One, sans-serif;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background-color: inherit;
+  font: inherit;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  background: url('./images/banner-bg.png'), var(--green-dark, #263a29);
+}
+
+.heading-lg {
+  font-family: var(--font-headings);
+  font-size: 3.35625em;
+  line-height: 120%; /* 4.0275em */
+}
+
+.headling {
+  font-family: var(--font-headings);
+  font-size: 2.75em;
+  line-height: 120%; /* 3.3em */
+}
+
+.headline-lg {
+  font-size: 1.9375em;
+  line-height: 150%; /* 2.90625em */
+}
+
+.paragraph-lg {
+  font-size: 1.375em;
+  line-height: 150%; /* 2.90625em */
+}
+
+.paragraph {
+  font-size: 1.125em;
+  line-height: 150%; /* 1.6875em */
+}
+
+@media only screen and (max-width: 767px) {
+  .heading-lg {
+    font-size: 2.75em;
   }
-}
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
+  .headling {
+    font-size: 2.3125em;
   }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+  .headline-lg {
+    font-size: 1.625em;
   }
 }
