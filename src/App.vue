@@ -1,3 +1,13 @@
+<script lang="ts">
+import HomeBanner from '@/components/HomeBanner.vue'
+
+export default {
+  components: {
+    HomeBanner
+  }
+}
+</script>
+
 <template>
-  <h1>Cookin'Up!</h1>
+  <HomeBanner />
 </template>
