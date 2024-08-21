@@ -8,39 +8,22 @@ export default {
     IngredientsList,
     IngredientsSelection
   },
+  methods: {
+    async fetchCategories() {
+      const response = await fetch(
+        'https://gist.githubusercontent.com/adeonir/aee35a83ba43245c4ec5edd1cc8e1827/raw/9dd47b536b5e0b7c85e2655a4bc41933b6859514/categories.json'
+      )
+      const categories = await response.json()
+      return categories
+    }
+  },
+  async created() {
+    this.categories = await this.fetchCategories()
+  },
   data() {
     return {
       ingredients: ['tomate', 'cebola', 'alho', 'pimentão', 'pimenta', 'coentro', 'sal', 'limão'],
-      categories: [
-        {
-          name: 'Laticínios e Ovos',
-          image: 'dairy_and_eggs.png',
-          ingredients: [
-            'ovos',
-            'queijo',
-            'leite',
-            'manteiga',
-            'creme de leite',
-            'iogurte',
-            'leite condensado',
-            'sorvete'
-          ]
-        },
-        {
-          name: 'Farinhas e Fermentos',
-          image: 'flours_and_leavening_agents.png',
-          ingredients: [
-            'farinha de trigo',
-            'polvilho',
-            'farinha de rosca',
-            'canjica',
-            'farinha de mandioca',
-            'fubá',
-            'linhaça',
-            'fermento químico'
-          ]
-        }
-      ]
+      categories: []
     }
   }
 }
