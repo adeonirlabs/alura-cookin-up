@@ -2,7 +2,7 @@
 export default {
   name: 'IngredientsList',
   props: {
-    ingredients: Array
+    ingredients: Array<string>
   }
 }
 </script>
@@ -10,7 +10,7 @@ export default {
 <template>
   <section>
     <span class="headline list-title">Sua lista</span>
-    <ul v-if="ingredients.length" class="ingredients-list">
+    <ul v-if="ingredients?.length" class="ingredients-list">
       <li v-for="ingredient in ingredients" :key="ingredient" class="ingredient">{{ ingredient }}</li>
     </ul>
     <p v-else class="paragraph empty-list">
