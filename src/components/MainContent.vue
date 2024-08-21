@@ -12,7 +12,7 @@ export default {
 <template>
   <main class="main-content">
     <section>
-      <span class="headline-lg list-title">Sua lista</span>
+      <span class="headline list-title">Sua lista</span>
       <ul v-if="ingredients.length" class="ingredients-list">
         <li v-for="ingredient in ingredients" :key="ingredient" class="ingredient">{{ ingredient }}</li>
       </ul>
@@ -28,8 +28,8 @@ export default {
 .main-content {
   padding: 6.5rem 7.5rem;
   border-radius: 3.75rem 3.75rem 0rem 0rem;
-  background: var(--creme, #fffaf3);
-  color: var(--cinza, #444);
+  background: var(--cream);
+  color: var(--gray);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +37,7 @@ export default {
 }
 
 .list-title {
-  color: var(--coral, #f0633c);
+  color: var(--coral);
   display: block;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -57,8 +57,8 @@ export default {
   padding: 0.5rem;
   text-align: center;
   transition: 0.2s;
-  color: var(--creme, #fffaf3);
-  background: var(--coral, #f0633c);
+  color: var(--cream);
+  background: var(--coral);
   font-weight: 700;
   text-transform: capitalize;
 }
@@ -70,7 +70,7 @@ export default {
   flex-wrap: wrap;
   gap: 0.25rem;
 
-  color: var(--coral, #f0633c);
+  color: var(--coral);
   text-align: center;
 }
 
