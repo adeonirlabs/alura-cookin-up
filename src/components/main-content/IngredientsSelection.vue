@@ -1,8 +1,10 @@
 <script lang="ts">
+import type { Category } from '@/types/Category'
+
 export default {
   name: 'IngredientsSelection',
   props: {
-    categories: Array
+    categories: Array<Category>
   }
 }
 </script>
