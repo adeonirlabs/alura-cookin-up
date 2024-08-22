@@ -1,10 +1,29 @@
 <script lang="ts">
 import type { Category } from '@/types/Category'
 
+import CategoryCard from './CategoryCard.vue'
+
 export default {
   name: 'IngredientsSelection',
-  props: {
-    categories: Array<Category>
+  components: {
+    CategoryCard
+  },
+  methods: {
+    async fetchCategories() {
+      const response = await fetch(
+        'https://gist.githubusercontent.com/adeonir/aee35a83ba43245c4ec5edd1cc8e1827/raw/9dd47b536b5e0b7c85e2655a4bc41933b6859514/categories.json'
+      )
+      const categories: Array<Category> = await response.json()
+      return categories
+    }
+  },
+  async created() {
+    this.categories = await this.fetchCategories()
+  },
+  data() {
+    return {
+      categories: [] as Array<Category>
+    }
   }
 }
 </script>
@@ -14,7 +33,7 @@ export default {
     <h1 class="heading-lg ingredients-title">Ingredientes</h1>
     <p class="paragraph-lg instructions-text">Selecione abaixo os ingredientes que você quer usar nesta receita:</p>
     <ul class="categories-list">
-      <li v-for="category in categories" :key="category.name">{{ category.name }}</li>
+      <CategoryCard v-for="category in categories" :key="category.name" :category="category" />
     </ul>
     <p class="paragraph text-tips">*Atenção: consideramos que você tem em casa sal, pimenta e água.</p>
   </section>
