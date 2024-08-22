@@ -24,7 +24,8 @@ export default {
     return {
       categories: [] as Array<Category>
     }
-  }
+  },
+  emits: ['add-ingredient', 'remove-ingredient']
 }
 </script>
 
@@ -33,7 +34,13 @@ export default {
     <h1 class="heading-lg ingredients-title">Ingredientes</h1>
     <p class="paragraph-lg instructions-text">Selecione abaixo os ingredientes que você quer usar nesta receita:</p>
     <ul class="categories-list">
-      <CategoryCard v-for="category in categories" :key="category.name" :category="category" />
+      <CategoryCard
+        v-for="category in categories"
+        :key="category.name"
+        :category="category"
+        @add-ingredient="$emit('add-ingredient', $event)"
+        @remove-ingredient="$emit('remove-ingredient', $event)"
+      />
     </ul>
     <p class="paragraph text-tips">*Atenção: consideramos que você tem em casa sal, pimenta e água.</p>
   </section>

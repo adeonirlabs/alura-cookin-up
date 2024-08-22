@@ -12,7 +12,8 @@ export default {
   },
   components: {
     IngredientTagButton
-  }
+  },
+  emits: ['add-ingredient', 'remove-ingredient']
 }
 </script>
 
@@ -24,7 +25,11 @@ export default {
     </header>
     <ul class="ingredients-list">
       <li v-for="ingredient in category.ingredients" :key="ingredient" class="ingredient-card">
-        <IngredientTagButton :ingredient="ingredient" />
+        <IngredientTagButton
+          :ingredient="ingredient"
+          @add-ingredient="$emit('add-ingredient', $event)"
+          @remove-ingredient="$emit('remove-ingredient', $event)"
+        />
       </li>
     </ul>
   </article>

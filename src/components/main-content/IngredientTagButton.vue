@@ -13,12 +13,24 @@ export default {
     return {
       selected: false
     }
-  }
+  },
+  methods: {
+    toggleSelected() {
+      this.selected = !this.selected
+
+      if (this.selected) {
+        this.$emit('add-ingredient', this.ingredient)
+      } else {
+        this.$emit('remove-ingredient', this.ingredient)
+      }
+    }
+  },
+  emits: ['add-ingredient', 'remove-ingredient']
 }
 </script>
 
 <template>
-  <button @click="selected = !selected" :aria-pressed="selected">
+  <button @click="toggleSelected" :aria-pressed="selected">
     <IngredientTag :name="ingredient" :selected="selected" />
   </button>
 </template>

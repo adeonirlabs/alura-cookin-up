@@ -10,7 +10,15 @@ export default {
   },
   data() {
     return {
-      ingredients: ['tomate', 'cebola', 'alho', 'pimentão', 'pimenta', 'coentro', 'sal', 'limão']
+      ingredients: [] as Array<string>
+    }
+  },
+  methods: {
+    addIngredient(ingredient: string) {
+      this.ingredients.push(ingredient)
+    },
+    removeIngredient(ingredient: string) {
+      this.ingredients = this.ingredients.filter((item) => item !== ingredient)
     }
   }
 }
@@ -19,7 +27,7 @@ export default {
 <template>
   <main class="main-content">
     <IngredientsList :ingredients="ingredients" />
-    <IngredientsSelection />
+    <IngredientsSelection @add-ingredient="addIngredient($event)" @remove-ingredient="removeIngredient($event)" />
   </main>
 </template>
 
