@@ -42,7 +42,7 @@ export default {
         @remove-ingredient="$emit('remove-ingredient', $event)"
       />
     </ul>
-    <p class="paragraph text-tips">*Atenção: consideramos que você tem em casa sal, pimenta e água.</p>
+    <small class="paragraph-sm text-tips">*Atenção: consideramos que você tem em casa sal, pimenta e água.</small>
   </section>
 </template>
 

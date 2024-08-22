@@ -70,6 +70,11 @@ body {
   line-height: 150%; /* 1.6875em */
 }
 
+.paragraph-sm {
+  font-size: 0.9375em;
+  line-height: 150%; /* 1.40625em */
+}
+
 @media only screen and (max-width: 767px) {
   .heading-lg {
     font-size: 2.75em;
