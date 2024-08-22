@@ -40,7 +40,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
-  background: url('./images/banner-bg.png'), var(--green-dark, #263a29);
+  background: url('./images/banner-bg.png'), var(--green-dark);
 }
 
 .heading-lg {
