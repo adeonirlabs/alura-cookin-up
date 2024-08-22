@@ -16,7 +16,7 @@ export default {
 
 <template>
   <section>
-    <span class="headline list-title">Sua lista</span>
+    <span class="headline list-title">Itens selecionados</span>
     <ul v-if="ingredients?.length" class="ingredients-list">
       <li v-for="ingredient in ingredients" :key="ingredient">
         <IngredientTag :name="ingredient" active />

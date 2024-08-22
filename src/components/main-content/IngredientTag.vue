@@ -23,6 +23,7 @@ export default {
   color: var(--gray);
   background: var(--gray-light);
   text-transform: capitalize;
+  user-select: none;
 }
 
 .tag-name.active {

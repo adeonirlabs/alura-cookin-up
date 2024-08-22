@@ -3,7 +3,7 @@ import type { PropType } from 'vue'
 
 import type { Category } from '@/types/Category'
 
-import IngredientTag from './IngredientTag.vue'
+import IngredientTagButton from './IngredientTagButton.vue'
 
 export default {
   name: 'CategoryCard',
@@ -11,7 +11,7 @@ export default {
     category: { type: Object as PropType<Category>, required: true }
   },
   components: {
-    IngredientTag
+    IngredientTagButton
   }
 }
 </script>
@@ -24,7 +24,7 @@ export default {
     </header>
     <ul class="ingredients-list">
       <li v-for="ingredient in category.ingredients" :key="ingredient" class="ingredient-card">
-        <IngredientTag :name="ingredient" />
+        <IngredientTagButton :ingredient="ingredient" />
       </li>
     </ul>
   </article>
