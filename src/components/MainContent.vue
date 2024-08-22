@@ -1,12 +1,14 @@
 <script lang="ts">
 import IngredientsList from './main-content/IngredientsList.vue'
 import IngredientsSelection from './main-content/IngredientsSelection.vue'
+import RecipeButton from './main-content/RecipeButton.vue'
 
 export default {
   name: 'MainContent',
   components: {
     IngredientsList,
-    IngredientsSelection
+    IngredientsSelection,
+    RecipeButton
   },
   data() {
     return {
@@ -28,6 +30,7 @@ export default {
   <main class="main-content">
     <IngredientsList :ingredients="ingredients" />
     <IngredientsSelection @add-ingredient="addIngredient($event)" @remove-ingredient="removeIngredient($event)" />
+    <RecipeButton label="Buscar receitas" />
   </main>
 </template>
 
