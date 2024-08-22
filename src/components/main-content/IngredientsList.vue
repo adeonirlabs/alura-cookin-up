@@ -30,6 +30,10 @@ export default {
 </template>
 
 <style scoped>
+section {
+  width: 100%;
+}
+
 .list-title {
   color: var(--coral);
   display: block;
@@ -42,6 +46,7 @@ export default {
   justify-content: center;
   gap: 1rem 1.5rem;
   flex-wrap: wrap;
+  margin-block: 1.625rem;
 }
 
 .empty-list {

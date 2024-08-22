@@ -48,6 +48,7 @@ export default {
 
 <style scoped>
 .ingredients-selection {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
