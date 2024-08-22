@@ -3,10 +3,15 @@ import type { PropType } from 'vue'
 
 import type { Category } from '@/types/Category'
 
+import IngredientTag from './IngredientTag.vue'
+
 export default {
   name: 'CategoryCard',
   props: {
     category: { type: Object as PropType<Category>, required: true }
+  },
+  components: {
+    IngredientTag
   }
 }
 </script>

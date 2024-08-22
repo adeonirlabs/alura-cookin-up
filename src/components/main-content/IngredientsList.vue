@@ -1,8 +1,13 @@
 <script lang="ts">
+import IngredientTag from './IngredientTag.vue'
+
 export default {
   name: 'IngredientsList',
   props: {
     ingredients: Array<string>
+  },
+  components: {
+    IngredientTag
   }
 }
 </script>
@@ -11,7 +16,9 @@ export default {
   <section>
     <span class="headline list-title">Sua lista</span>
     <ul v-if="ingredients?.length" class="ingredients-list">
-      <li v-for="ingredient in ingredients" :key="ingredient" class="ingredient">{{ ingredient }}</li>
+      <li v-for="ingredient in ingredients" :key="ingredient">
+        <IngredientTag :name="ingredient" />
+      </li>
     </ul>
     <p v-else class="paragraph empty-list">
       <img src="@/assets/images/icons/empty-list.svg" alt="Ícone de pesquisa" />
@@ -33,19 +40,6 @@ export default {
   justify-content: center;
   gap: 1rem 1.5rem;
   flex-wrap: wrap;
-}
-
-.ingredient {
-  display: inline-block;
-  border-radius: 0.5rem;
-  min-width: 4.25rem;
-  padding: 0.5rem;
-  text-align: center;
-  transition: 0.2s;
-  color: var(--cream);
-  background: var(--coral);
-  font-weight: 700;
-  text-transform: capitalize;
 }
 
 .empty-list {
