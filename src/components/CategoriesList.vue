@@ -1,11 +1,16 @@
 <script lang="ts">
 import CategoryCard from '@/components/CategoryCard.vue'
+import RecipeButton from '@/components/RecipeButton.vue'
 import type { Category } from '@/types/Category'
 
 export default {
   name: 'CategoriesList',
+  props: {
+    isIngredientsEmpty: { type: Boolean, required: true }
+  },
   components: {
-    CategoryCard
+    CategoryCard,
+    RecipeButton
   },
   methods: {
     async fetchCategories() {
@@ -24,7 +29,7 @@ export default {
       categories: [] as Array<Category>
     }
   },
-  emits: ['add-ingredient', 'remove-ingredient']
+  emits: ['add-ingredient', 'remove-ingredient', 'search-recipes']
 }
 </script>
 
@@ -42,6 +47,7 @@ export default {
       />
     </ul>
     <small class="paragraph-sm text-tips">*Atenção: consideramos que você tem em casa sal, pimenta e água.</small>
+    <RecipeButton label="Buscar receitas" @click="$emit('search-recipes')" :disabled="isIngredientsEmpty" />
   </section>
 </template>
 
