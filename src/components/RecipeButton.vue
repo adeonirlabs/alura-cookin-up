@@ -28,7 +28,12 @@ export default {
   align-items: center;
 }
 
-.recipe-button:hover {
+.recipe-button:hover:not(:disabled) {
   background: var(--ochre-hover);
+}
+
+.recipe-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 </style>
