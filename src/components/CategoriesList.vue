@@ -1,7 +1,6 @@
 <script lang="ts">
+import CategoryCard from '@/components/CategoryCard.vue'
 import type { Category } from '@/types/Category'
-
-import CategoryCard from './CategoryCard.vue'
 
 export default {
   name: 'CategoriesList',
@@ -30,9 +29,9 @@ export default {
 </script>
 
 <template>
-  <section class="ingredients-selection">
-    <h1 class="heading-lg ingredients-title">Ingredientes</h1>
-    <p class="paragraph-lg instructions-text">Selecione abaixo os ingredientes que você quer usar nesta receita:</p>
+  <section>
+    <h1 class="heading-lg title">Ingredientes</h1>
+    <p class="paragraph-lg subtitle">Selecione abaixo os ingredientes que você quer usar nesta receita:</p>
     <ul class="categories-list">
       <CategoryCard
         v-for="category in categories"
@@ -47,20 +46,20 @@ export default {
 </template>
 
 <style scoped>
-.ingredients-selection {
+section {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.ingredients-title {
+.title {
   color: var(--green);
   display: block;
   margin-bottom: 1.5rem;
 }
 
-.instructions-text {
+.subtitle {
   margin-bottom: 2rem;
 }
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-import IngredientTag from './IngredientTag.vue'
+import IngredientTag from '@/components/IngredientTag.vue'
 
 export default {
   name: 'IngredientTagButton',

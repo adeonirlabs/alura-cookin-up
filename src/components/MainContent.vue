@@ -1,7 +1,7 @@
 <script lang="ts">
-import CategoriesList from './main-content/CategoriesList.vue'
-import IngredientsList from './main-content/IngredientsList.vue'
-import RecipeButton from './main-content/RecipeButton.vue'
+import CategoriesList from '@/components/CategoriesList.vue'
+import IngredientsList from '@/components/IngredientsList.vue'
+import RecipeButton from '@/components/RecipeButton.vue'
 
 export default {
   name: 'MainContent',

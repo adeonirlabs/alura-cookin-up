@@ -1,9 +1,8 @@
 <script lang="ts">
 import type { PropType } from 'vue'
 
+import IngredientTagButton from '@/components/IngredientTagButton.vue'
 import type { Category } from '@/types/Category'
-
-import IngredientTagButton from './IngredientTagButton.vue'
 
 export default {
   name: 'CategoryCard',

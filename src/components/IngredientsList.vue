@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { PropType } from 'vue'
 
-import IngredientTag from './IngredientTag.vue'
+import IngredientTag from '@/components/IngredientTag.vue'
 
 export default {
   name: 'IngredientsList',
