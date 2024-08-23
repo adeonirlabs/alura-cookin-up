@@ -1,6 +1,6 @@
 <script lang="ts">
 import CategoryCard from '@/components/CategoryCard.vue'
-import RecipeButton from '@/components/RecipeButton.vue'
+import MainButton from '@/components/MainButton.vue'
 import type { Category } from '@/types/Category'
 
 export default {
@@ -10,7 +10,7 @@ export default {
   },
   components: {
     CategoryCard,
-    RecipeButton
+    MainButton
   },
   methods: {
     async fetchCategories() {
@@ -47,7 +47,7 @@ export default {
       />
     </ul>
     <small class="paragraph-sm text-tips">*Atenção: consideramos que você tem em casa sal, pimenta e água.</small>
-    <RecipeButton label="Buscar receitas" @click="$emit('search-recipes')" :disabled="isIngredientsEmpty" />
+    <MainButton label="Buscar receitas" @click="$emit('search-recipes')" :disabled="isIngredientsEmpty" />
   </section>
 </template>
 

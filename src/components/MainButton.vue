@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  name: 'RecipeButton',
+  name: 'MainButton',
   props: {
     label: { type: String, required: true }
   }
@@ -8,14 +8,15 @@ export default {
 </script>
 
 <template>
-  <button class="recipe-button">
+  <button>
     {{ label }}
   </button>
 </template>
 
 <style scoped>
-.recipe-button {
-  padding: 1rem 3rem;
+button {
+  width: 20rem;
+  padding: 1rem;
   border-radius: 2rem;
   font-weight: 700;
   color: var(--cream);
@@ -28,11 +29,11 @@ export default {
   align-items: center;
 }
 
-.recipe-button:hover:not(:disabled) {
+button:hover:not(:disabled) {
   background: var(--ochre-hover);
 }
 
-.recipe-button:disabled {
+button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
