@@ -25,21 +25,28 @@ export default {
     return {
       recipes: [] as Array<Recipe>
     }
-  }
+  },
+  emits: ['edit-ingredients']
 }
 </script>
 
 <template>
   <section>
     <h1 class="heading-lg title">Receitas</h1>
-    <p class="paragraph-lg recipes-result">Resultados encontrados: {{ recipes.length }}.</p>
-    <p class="paragraph-lg subtitle">
-      Veja as opções de receitas que encontramos com os ingredientes que você tem por aí:
-    </p>
-    <ul class="recipes-list">
-      <RecipeCard v-for="recipe in recipes" :key="recipe.name" :recipe="recipe" />
-    </ul>
-    <MainButton label="Buscar receitas" @click="$emit('search-recipes')" />
+    <p class="paragraph-lg result-text">Resultados encontrados: {{ recipes.length }}.</p>
+    <div v-if="recipes?.length">
+      <p class="paragraph-lg subtitle">
+        Veja as opções de receitas que encontramos com os ingredientes que você tem por aí:
+      </p>
+      <ul class="recipes-list">
+        <RecipeCard v-for="recipe in recipes" :key="recipe.name" :recipe="recipe" />
+      </ul>
+    </div>
+    <div v-else class="paragraph empty-list">
+      <p class="paragraph-lg subtitle">Ops, não encontramos resultados para sua combinação. Vamos tentar de novo?</p>
+      <img src="@/assets/images/no-recipes.png" alt="Sem resultados" />
+    </div>
+    <MainButton label="Editar ingredientes" @click="$emit('edit-ingredients')" />
   </section>
 </template>
 
@@ -61,9 +68,15 @@ section {
   margin-bottom: 2rem;
 }
 
-.recipes-result {
+.result-text {
   color: var(--green);
   margin-bottom: 0.5rem;
+}
+
+.recipes-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .recipes-list {
@@ -73,5 +86,10 @@ section {
   gap: 1.5rem;
   flex-wrap: wrap;
   margin-bottom: 3.5rem;
+}
+
+.empty-list {
+  margin-bottom: 3.5rem;
+  text-align: center;
 }
 </style>

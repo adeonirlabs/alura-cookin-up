@@ -55,7 +55,6 @@ section {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.25rem;
-
   color: var(--coral);
   text-align: center;
 }

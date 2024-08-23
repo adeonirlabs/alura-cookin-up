@@ -42,7 +42,7 @@ export default {
       @remove-ingredient="removeIngredient($event)"
       @search-recipes="navigate('recipes')"
     />
-    <RecipesList v-else-if="content === 'recipes'" />
+    <RecipesList v-else-if="content === 'recipes'" @edit-ingredients="navigate('categories')" />
   </main>
 </template>
 
