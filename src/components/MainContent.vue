@@ -1,13 +1,13 @@
 <script lang="ts">
+import CategoriesList from './main-content/CategoriesList.vue'
 import IngredientsList from './main-content/IngredientsList.vue'
-import IngredientsSelection from './main-content/IngredientsSelection.vue'
 import RecipeButton from './main-content/RecipeButton.vue'
 
 export default {
   name: 'MainContent',
   components: {
     IngredientsList,
-    IngredientsSelection,
+    CategoriesList,
     RecipeButton
   },
   data() {
@@ -29,7 +29,7 @@ export default {
 <template>
   <main class="main-content">
     <IngredientsList :ingredients="ingredients" />
-    <IngredientsSelection @add-ingredient="addIngredient($event)" @remove-ingredient="removeIngredient($event)" />
+    <CategoriesList @add-ingredient="addIngredient($event)" @remove-ingredient="removeIngredient($event)" />
     <RecipeButton label="Buscar receitas" />
   </main>
 </template>

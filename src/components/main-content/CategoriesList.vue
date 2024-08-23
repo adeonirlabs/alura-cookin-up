@@ -4,7 +4,7 @@ import type { Category } from '@/types/Category'
 import CategoryCard from './CategoryCard.vue'
 
 export default {
-  name: 'IngredientsSelection',
+  name: 'CategoriesList',
   components: {
     CategoryCard
   },
