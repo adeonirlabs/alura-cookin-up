@@ -35,14 +35,16 @@ export default {
 <template>
   <main class="main-content">
     <IngredientsList :ingredients="ingredients" />
-    <CategoriesList
-      v-if="content === 'categories'"
-      :isIngredientsEmpty="ingredients.length === 0"
-      @add-ingredient="addIngredient($event)"
-      @remove-ingredient="removeIngredient($event)"
-      @search-recipes="navigate('recipes')"
-    />
-    <RecipesList v-else-if="content === 'recipes'" @edit-ingredients="navigate('categories')" />
+    <KeepAlive include="CategoriesList">
+      <CategoriesList
+        v-if="content === 'categories'"
+        :isIngredientsEmpty="ingredients.length === 0"
+        @add-ingredient="addIngredient($event)"
+        @remove-ingredient="removeIngredient($event)"
+        @search-recipes="navigate('recipes')"
+      />
+      <RecipesList v-else-if="content === 'recipes'" @edit-ingredients="navigate('categories')" />
+    </KeepAlive>
   </main>
 </template>
 
