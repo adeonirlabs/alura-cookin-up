@@ -1,16 +1,21 @@
 <script lang="ts">
 import CategoriesList from '@/components/CategoriesList.vue'
 import IngredientsList from '@/components/IngredientsList.vue'
+import RecipesList from '@/components/RecipesList.vue'
+
+type Content = 'categories' | 'recipes'
 
 export default {
   name: 'MainContent',
   components: {
     IngredientsList,
-    CategoriesList
+    CategoriesList,
+    RecipesList
   },
   data() {
     return {
-      ingredients: [] as Array<string>
+      ingredients: [] as Array<string>,
+      content: 'categories' as Content
     }
   },
   methods: {
@@ -19,6 +24,9 @@ export default {
     },
     removeIngredient(ingredient: string) {
       this.ingredients = this.ingredients.filter((item) => item !== ingredient)
+    },
+    navigate(content: Content) {
+      this.content = content
     }
   }
 }
@@ -27,7 +35,14 @@ export default {
 <template>
   <main class="main-content">
     <IngredientsList :ingredients="ingredients" />
-    <CategoriesList @add-ingredient="addIngredient($event)" @remove-ingredient="removeIngredient($event)" />
+    <CategoriesList
+      v-if="content === 'categories'"
+      :isIngredientsEmpty="ingredients.length === 0"
+      @add-ingredient="addIngredient($event)"
+      @remove-ingredient="removeIngredient($event)"
+      @search-recipes="navigate('recipes')"
+    />
+    <RecipesList v-else-if="content === 'recipes'" />
   </main>
 </template>
 
