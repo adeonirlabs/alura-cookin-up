@@ -32,6 +32,7 @@ export default {
 <template>
   <section>
     <h1 class="heading-lg title">Receitas</h1>
+    <p class="paragraph-lg recipes-result">Resultados encontrados: {{ recipes.length }}.</p>
     <p class="paragraph-lg subtitle">
       Veja as opções de receitas que encontramos com os ingredientes que você tem por aí:
     </p>
@@ -58,6 +59,11 @@ section {
 
 .subtitle {
   margin-bottom: 2rem;
+}
+
+.recipes-result {
+  color: var(--green);
+  margin-bottom: 0.5rem;
 }
 
 .recipes-list {
