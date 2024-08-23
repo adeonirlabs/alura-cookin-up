@@ -20,10 +20,10 @@ export default {
   <article class="category-card">
     <header class="card-header">
       <img :src="`/images/icons/categories/${category.image}`" :alt="category.name" class="card-image" />
-      <h2 class="paragraph-lg category-title">{{ category.name }}</h2>
+      <h2 class="paragraph-lg card-title">{{ category.name }}</h2>
     </header>
     <ul class="ingredients-list">
-      <li v-for="ingredient in category.ingredients" :key="ingredient" class="ingredient-card">
+      <li v-for="ingredient in category.ingredients" :key="ingredient">
         <IngredientTagButton
           :ingredient="ingredient"
           @add-ingredient="$emit('add-ingredient', $event)"
@@ -60,7 +60,7 @@ export default {
   width: 5rem;
 }
 
-.category-title {
+.card-title {
   text-align: center;
   color: var(--green);
   font-weight: 700;
