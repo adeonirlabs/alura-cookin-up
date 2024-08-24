@@ -1,10 +1,15 @@
 <script lang="ts">
+import type { PropType } from 'vue'
+
 import MainButton from '@/components/MainButton.vue'
 import RecipeCard from '@/components/RecipeCard.vue'
 import type { Recipe } from '@/types/Recipe'
 
 export default {
   name: 'RecipesList',
+  props: {
+    ingredients: { type: Array as PropType<string[]>, required: true }
+  },
   components: {
     RecipeCard,
     MainButton
@@ -16,10 +21,17 @@ export default {
       )
       const recipes = await response.json()
       return recipes
+    },
+    itemsOnBothLists(list1: unknown[], list2: unknown[]) {
+      return list1.some((item) => list2.includes(item))
     }
   },
   async created() {
-    this.recipes = await this.fetchRecipes()
+    const recipes = await this.fetchRecipes()
+    this.recipes = recipes.filter((recipe: Recipe) => {
+      const matchIngredients = this.itemsOnBothLists(recipe.ingredients, this.ingredients)
+      return matchIngredients
+    })
   },
   data() {
     return {

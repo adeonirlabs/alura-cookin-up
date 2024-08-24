@@ -43,7 +43,11 @@ export default {
         @remove-ingredient="removeIngredient($event)"
         @search-recipes="navigate('recipes')"
       />
-      <RecipesList v-else-if="content === 'recipes'" @edit-ingredients="navigate('categories')" />
+      <RecipesList
+        v-else-if="content === 'recipes'"
+        :ingredients="ingredients"
+        @edit-ingredients="navigate('categories')"
+      />
     </KeepAlive>
   </main>
 </template>
@@ -57,20 +61,20 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5rem;
+  gap: 3rem;
 }
 
 @media only screen and (max-width: 1300px) {
   .main-content {
     padding: 5rem 3.75rem;
-    gap: 3.5rem;
+    gap: 1rem;
   }
 }
 
 @media only screen and (max-width: 767px) {
   .main-content {
     padding: 4rem 1.5rem;
-    gap: 4rem;
+    gap: 2rem;
   }
 }
 </style>
