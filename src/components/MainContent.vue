@@ -38,7 +38,7 @@ export default {
     <KeepAlive include="CategoriesList">
       <CategoriesList
         v-if="content === 'categories'"
-        :isIngredientsEmpty="ingredients.length === 0"
+        :is-ingredients-empty="ingredients.length === 0"
         @add-ingredient="addIngredient($event)"
         @remove-ingredient="removeIngredient($event)"
         @search-recipes="navigate('recipes')"

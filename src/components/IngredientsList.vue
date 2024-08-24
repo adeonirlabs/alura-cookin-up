@@ -5,11 +5,11 @@ import IngredientTag from '@/components/IngredientTag.vue'
 
 export default {
   name: 'IngredientsList',
-  props: {
-    ingredients: { type: Array as PropType<string[]>, required: true }
-  },
   components: {
     IngredientTag
+  },
+  props: {
+    ingredients: { type: Array as PropType<string[]>, required: true }
   }
 }
 </script>

@@ -2,15 +2,15 @@
 import type { PropType } from 'vue'
 
 import IngredientTagButton from '@/components/IngredientTagButton.vue'
-import type { Category } from '@/types/Category'
+import type { Category } from '@/types/category'
 
 export default {
   name: 'CategoryCard',
-  props: {
-    category: { type: Object as PropType<Category>, required: true }
-  },
   components: {
     IngredientTagButton
+  },
+  props: {
+    category: { type: Object as PropType<Category>, required: true }
   },
   emits: ['add-ingredient', 'remove-ingredient']
 }

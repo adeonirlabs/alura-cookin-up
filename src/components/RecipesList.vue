@@ -3,16 +3,31 @@ import type { PropType } from 'vue'
 
 import MainButton from '@/components/MainButton.vue'
 import RecipeCard from '@/components/RecipeCard.vue'
-import type { Recipe } from '@/types/Recipe'
+import type { Recipe } from '@/types/recipe'
 
 export default {
   name: 'RecipesList',
-  props: {
-    ingredients: { type: Array as PropType<string[]>, required: true }
-  },
   components: {
     RecipeCard,
     MainButton
+  },
+  props: {
+    ingredients: { type: Array as PropType<string[]>, required: true }
+  },
+  emits: ['edit-ingredients'],
+  data() {
+    return {
+      recipes: [] as Array<Recipe>
+    }
+  },
+  async created() {
+    const recipes = await this.fetchRecipes()
+
+    this.recipes = recipes.filter((recipe: Recipe) => {
+      const matchIngredients = this.itemsOnBothLists(recipe.ingredients, this.ingredients)
+
+      return matchIngredients
+    })
   },
   methods: {
     async fetchRecipes() {
@@ -20,25 +35,13 @@ export default {
         'https://gist.githubusercontent.com/adeonir/aee35a83ba43245c4ec5edd1cc8e1827/raw/c219a3178191efd334dbbfe4c5e90c03ed7801f5/recipes.json'
       )
       const recipes = await response.json()
+
       return recipes
     },
     itemsOnBothLists(list1: unknown[], list2: unknown[]) {
       return list1.some((item) => list2.includes(item))
     }
-  },
-  async created() {
-    const recipes = await this.fetchRecipes()
-    this.recipes = recipes.filter((recipe: Recipe) => {
-      const matchIngredients = this.itemsOnBothLists(recipe.ingredients, this.ingredients)
-      return matchIngredients
-    })
-  },
-  data() {
-    return {
-      recipes: [] as Array<Recipe>
-    }
-  },
-  emits: ['edit-ingredients']
+  }
 }
 </script>
 

@@ -3,12 +3,13 @@ import IngredientTag from '@/components/IngredientTag.vue'
 
 export default {
   name: 'IngredientTagButton',
-  props: {
-    ingredient: { type: String, required: true }
-  },
   components: {
     IngredientTag
   },
+  props: {
+    ingredient: { type: String, required: true }
+  },
+  emits: ['add-ingredient', 'remove-ingredient'],
   data() {
     return {
       selected: false
@@ -24,13 +25,12 @@ export default {
         this.$emit('remove-ingredient', this.ingredient)
       }
     }
-  },
-  emits: ['add-ingredient', 'remove-ingredient']
+  }
 }
 </script>
 
 <template>
-  <button @click="toggleSelected" :aria-pressed="selected">
+  <button :aria-pressed="selected" @click="toggleSelected">
     <IngredientTag :name="ingredient" :selected="selected" />
   </button>
 </template>

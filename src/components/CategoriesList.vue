@@ -1,16 +1,25 @@
 <script lang="ts">
 import CategoryCard from '@/components/CategoryCard.vue'
 import MainButton from '@/components/MainButton.vue'
-import type { Category } from '@/types/Category'
+import type { Category } from '@/types/category'
 
 export default {
   name: 'CategoriesList',
-  props: {
-    isIngredientsEmpty: { type: Boolean, required: true }
-  },
   components: {
     CategoryCard,
     MainButton
+  },
+  props: {
+    isIngredientsEmpty: { type: Boolean, required: true }
+  },
+  emits: ['add-ingredient', 'remove-ingredient', 'search-recipes'],
+  data() {
+    return {
+      categories: [] as Array<Category>
+    }
+  },
+  async created() {
+    this.categories = await this.fetchCategories()
   },
   methods: {
     async fetchCategories() {
@@ -18,18 +27,10 @@ export default {
         'https://gist.githubusercontent.com/adeonir/aee35a83ba43245c4ec5edd1cc8e1827/raw/9dd47b536b5e0b7c85e2655a4bc41933b6859514/categories.json'
       )
       const categories: Array<Category> = await response.json()
+
       return categories
     }
-  },
-  async created() {
-    this.categories = await this.fetchCategories()
-  },
-  data() {
-    return {
-      categories: [] as Array<Category>
-    }
-  },
-  emits: ['add-ingredient', 'remove-ingredient', 'search-recipes']
+  }
 }
 </script>
 
@@ -47,7 +48,7 @@ export default {
       />
     </ul>
     <small class="paragraph-sm text-tips">*Atenção: consideramos que você tem em casa sal, pimenta e água.</small>
-    <MainButton label="Buscar receitas" @click="$emit('search-recipes')" :disabled="isIngredientsEmpty" />
+    <MainButton label="Buscar receitas" :disabled="isIngredientsEmpty" @click="$emit('search-recipes')" />
   </section>
 </template>
 
